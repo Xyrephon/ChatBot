@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>540</x>
+      <y>190</y>
+      <w>270</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>chat.controller :: ChatController
+--
+- stupidBot : ChatBot
+- chatView: ChatbotViewer
+--
++ start : void
++ get/set</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>540</x>
+      <y>110</y>
+      <w>270</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>chat.controller :: ChatRunner
+--
+
+--
++ main : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>180</x>
+      <y>360</y>
+      <w>290</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>chat.view :: ChatViewer
+--
+
+--
++ collectResponse(String) : String
++ displayMessage(String) : void
++ collectUserOption(String) : int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>170</x>
+      <y>120</y>
+      <w>280</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>chat.model :: ChatBot
+--
+
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>150</x>
+      <y>80</y>
+      <w>320</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>chat.model
+--
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>150</x>
+      <y>310</y>
+      <w>350</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>chat.view
+--
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>510</x>
+      <y>80</y>
+      <w>320</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>chat.controller
+--
+bg=magenta</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
