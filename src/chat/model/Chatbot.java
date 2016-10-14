@@ -31,14 +31,14 @@ public class Chatbot
 		this.userName = userName;
 	}
 
-	private void buildMemesList()
+	private void buildMemesList(ArrayList<String> memesList)
 	{
-
+		this.memesList = memesList;
 	}
 
-	private void buildPoliticalTopicsList()
+	private void buildPoliticalTopicsList(ArrayList<String> politicalTopicList)
 	{
-
+		this.politicalTopicList = politicalTopicList;
 	}
 
 	/**
