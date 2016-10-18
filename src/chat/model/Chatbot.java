@@ -142,5 +142,59 @@ public class Chatbot
 	public void setContent(String content)
 	{
 	}
+	
+	public boolean quitChecker(String currentInput)
+	{
+		boolean checker = false;
+		
+		if(currentInput == "exit")
+		{
+			checker = false;
+		}
+		
+		if(currentInput == "quit")
+		{
+			checker = true;
+		}
+		
+		return checker;
+	}
+	
+	public boolean keyboardMashChecker(String currentInput)
+	{
+		boolean mashChecker = false;
+		
+		if(currentInput == "S.D.F.")
+		{
+			mashChecker = false;
+		}
+		
+		if(currentInput == "derf")
+		{
+			mashChecker = false;
+		}
+		
+		if(currentInput == "sdf")
+		{
+			mashChecker = true;
+		}
+		
+		if(currentInput == "dfg")
+		{
+			mashChecker = true;
+		}
+		
+		if(currentInput == "cvb")
+		{	
+			mashChecker = true;
+		}	
+		
+		if(currentInput == ",./")
+		{
+			mashChecker = true;
+		}
+		
+		return mashChecker;
+	}
 
 }
