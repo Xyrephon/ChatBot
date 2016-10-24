@@ -28,17 +28,54 @@ public class Chatbot
 		this.userName = userName;
 		buildMemesList();
 		buildPoliticalTopicsList();
+		this.content = "Something nifty";
 		
 	}
 
 	private void buildMemesList()
 	{
-	
+		memesList.add("doge");
+		memesList.add("cute animals");
+		memesList.add("grumpy cat");
+		memesList.add("dat boi");
+		memesList.add("willy wonka");
+		memesList.add("harambe");
+		memesList.add("john cena");
+		memesList.add("chuck norris");
+		memesList.add("the most interesting man alive");
+		memesList.add("punctuation saves lives");
+		memesList.add("winter is coming");
+		memesList.add("arthur");
+		memesList.add("Y U No");
+		memesList.add("Philosoraptor");
+		memesList.add("One Does Not Simply");
+		memesList.add("Fururama Fry");
+		memesList.add("Success Kid");
+		memesList.add("Bad Luck Brian");
+		memesList.add("Good Guy Greg");
 	}
 
 	private void buildPoliticalTopicsList()
 	{
-	
+		politicalTopicList.add("Democrat");
+		politicalTopicList.add("Republican");
+		politicalTopicList.add("11/8/16");
+		politicalTopicList.add("conservative");
+		politicalTopicList.add("Clinton");
+		politicalTopicList.add("Trump");
+		politicalTopicList.add("Kaine");
+		politicalTopicList.add("Pence");
+		politicalTopicList.add("Stein");
+		politicalTopicList.add("Johnson");
+		politicalTopicList.add("election");
+		politicalTopicList.add("Ben Carson");
+		politicalTopicList.add("politics");
+		politicalTopicList.add("Democracy");
+		politicalTopicList.add("Republic");
+		politicalTopicList.add("government");
+		politicalTopicList.add("corruption");
+		politicalTopicList.add("constitution");
+		politicalTopicList.add("presidential");
 	}
 
 	/**
@@ -70,7 +107,9 @@ public class Chatbot
 	 */
 	public boolean contentChecker(String currentInput)
 	{
-		return false;
+		boolean hasContent = false;
+		
+		return hasContent;
 	}
 
 	/**
