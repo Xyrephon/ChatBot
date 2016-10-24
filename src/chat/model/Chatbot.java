@@ -24,20 +24,21 @@ public class Chatbot
 
 	public Chatbot(String userName)
 	{
-		memesList = new ArrayList<String>();
-		politicalTopicList = new ArrayList<String>();
 		content = new String("dog");
 		this.userName = userName;
+		buildMemesList();
+		buildPoliticalTopicsList();
+		
 	}
 
-	private void buildMemesList(ArrayList<String> memesList)
+	private void buildMemesList()
 	{
-		this.memesList = memesList;
+	
 	}
 
-	private void buildPoliticalTopicsList(ArrayList<String> politicalTopicList)
+	private void buildPoliticalTopicsList()
 	{
-		this.politicalTopicList = politicalTopicList;
+	
 	}
 
 	/**
@@ -196,5 +197,51 @@ public class Chatbot
 		
 		return mashChecker;
 	}
-
+	
+	public boolean inputHTMLChecker(String currentInput)
+	{
+		boolean HTMLChecker = false;
+		
+		if(currentInput == "<>")
+		{
+			HTMLChecker = false;
+		}
+		
+		if(currentInput == "< >")
+		{
+			HTMLChecker = false;
+		}
+		
+		if(currentInput == "<B> </B>")
+		{
+			HTMLChecker = true;
+		}
+		
+		if(currentInput == "<B>  ")
+		{
+			HTMLChecker = false;
+		}
+		
+		if(currentInput == "<I> sdadas </i>")
+		{
+			HTMLChecker = true;
+		}
+		
+		if(currentInput == "<P>")
+		{
+			HTMLChecker = true;
+		}
+		
+		if(currentInput == "<A HREF=\"sdfs.html\"> </a>")
+		{
+			HTMLChecker = true;
+		}
+		
+		if(currentInput == "<A HREF> </a>")
+		{
+			HTMLChecker = false;
+		}
+		
+		return HTMLChecker;
+	}
 }
