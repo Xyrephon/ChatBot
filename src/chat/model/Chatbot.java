@@ -46,13 +46,13 @@ public class Chatbot
 		memesList.add("punctuation saves lives");
 		memesList.add("winter is coming");
 		memesList.add("arthur");
-		memesList.add("Y U No");
-		memesList.add("Philosoraptor");
-		memesList.add("One Does Not Simply");
-		memesList.add("Fururama Fry");
-		memesList.add("Success Kid");
-		memesList.add("Bad Luck Brian");
-		memesList.add("Good Guy Greg");
+		memesList.add("y u no");
+		memesList.add("philosoraptor");
+		memesList.add("one does not simply");
+		memesList.add("fururama fry");
+		memesList.add("success kid");
+		memesList.add("bad luck brian");
+		memesList.add("good guy greg");
 	}
 
 	private void buildPoliticalTopicsList()
@@ -105,9 +105,15 @@ public class Chatbot
 	 *            The supplied String to be checked. * @return Whether it
 	 *            matches the content area.
 	 */
+	
 	public boolean contentChecker(String currentInput)
 	{
 		boolean hasContent = false;
+		
+		if (currentInput.contains(content))
+		{
+			hasContent = true;
+		}
 		
 		return hasContent;
 	}
@@ -123,7 +129,17 @@ public class Chatbot
 	 */
 	public boolean politicalTopicChecker(String currentInput)
 	{
-		return false;
+		boolean politicalTopic = false;
+		
+		for (String currentPoliticalTopic: politicalTopicList)
+		{
+			if(currentInput.contains(currentPoliticalTopic))
+			{	
+				politicalTopic = true;
+			}
+		}
+		
+		return politicalTopic;
 	}
 
 	/**
@@ -136,7 +152,18 @@ public class Chatbot
 	 */
 	public boolean memeChecker(String currentInput)
 	{
-		return false;
+		boolean meme = false;
+		String userInput = currentInput.toLowerCase();
+		
+		for (String currentMeme: memesList)
+		{
+			if(userInput.contains(currentMeme))
+			{
+				meme = true;
+			}
+		}
+		
+		return meme;
 	}
 
 	/**
