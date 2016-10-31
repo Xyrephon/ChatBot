@@ -15,6 +15,7 @@ public class Chatbot
 	private ArrayList<String> politicalTopicList;
 	private String userName;
 	private String content;
+	
 
 	/**
 	 * Creates an instance of the Chatbot with the supplied username.
@@ -26,9 +27,11 @@ public class Chatbot
 	{
 		content = new String("dog");
 		this.userName = userName;
-		buildMemesList();
-		buildPoliticalTopicsList();
 		this.content = "Something nifty";
+		memesList = new ArrayList<String>();
+		buildMemesList();
+		politicalTopicList = new ArrayList<String>();
+		buildPoliticalTopicsList();	
 		
 	}
 
@@ -310,4 +313,27 @@ public class Chatbot
 		
 		return HTMLChecker;
 	}
+	
+/*	public boolean testTwitterChecker(String currentInput)
+	{
+		boolean twitter = false;
+		
+		if(currentInput == " ")
+		{
+			twitter = false;
+		}
+		
+		if(currentInput == "#dw35 f")
+		{
+			twitter = true;
+		}
+		
+		if(currentInput == " sdfsd # ")
+		{
+			twitter = false;
+		}
+		
+		return twitter;
+	}
+*/
 }
