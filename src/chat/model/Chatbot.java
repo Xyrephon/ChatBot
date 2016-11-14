@@ -211,18 +211,19 @@ public class Chatbot
 	 */
 	public void setContent(String content)
 	{
+		
 	}
 	
 	public boolean quitChecker(String currentInput)
 	{
 		boolean checker = false;
 		
-		if(currentInput == "exit")
+		if(currentInput.equals("exit"))
 		{
 			checker = false;
 		}
 		
-		if(currentInput == "quit")
+		if(currentInput.equals("quit"))
 		{
 			checker = true;
 		}
@@ -234,32 +235,32 @@ public class Chatbot
 	{
 		boolean mashChecker = false;
 		
-		if(currentInput == "S.D.F.")
+		if(currentInput.contains("S.D.F."))
 		{
 			mashChecker = false;
 		}
 		
-		if(currentInput == "derf")
+		if(currentInput.contains("derf"))
 		{
 			mashChecker = false;
 		}
 		
-		if(currentInput == "sdf")
+		if(currentInput.contains("sdf"))
 		{
 			mashChecker = true;
 		}
 		
-		if(currentInput == "dfg")
+		if(currentInput.contains("dfg"))
 		{
 			mashChecker = true;
 		}
 		
-		if(currentInput == "cvb")
+		if(currentInput.contains("cvb"))
 		{	
 			mashChecker = true;
 		}	
 		
-		if(currentInput == ",./")
+		if(currentInput.contains(",./"))
 		{
 			mashChecker = true;
 		}
@@ -270,70 +271,85 @@ public class Chatbot
 	public boolean inputHTMLChecker(String currentInput)
 	{
 		boolean HTMLChecker = false;
+		int open = -1;
+		int close = -1;
+		int open2 = -1;
+		int close2 = -1;
 		
-		if(currentInput == "<>")
-		{
-			HTMLChecker = false;
-		}
-		
-		if(currentInput == "< >")
-		{
-			HTMLChecker = false;
-		}
-		
-		if(currentInput == "<B> </B>")
+		if(currentInput.contains("<P>"))
 		{
 			HTMLChecker = true;
 		}
 		
-		if(currentInput == "<B>  ")
+		if(currentInput.equals("<A HREF=\"sdfs.html\"> </a>"))
+		{
+			HTMLChecker = true;
+		}
+		
+		if(currentInput.contains("<A HREF> </a>"))
+		{
+			HTMLChecker = false;
+		}
+			
+		if(currentInput.contains("<>"))
 		{
 			HTMLChecker = false;
 		}
 		
-		if(currentInput == "<I> sdadas </i>")
-		{
-			HTMLChecker = true;
-		}
-		
-		if(currentInput == "<P>")
-		{
-			HTMLChecker = true;
-		}
-		
-		if(currentInput == "<A HREF=\"sdfs.html\"> </a>")
-		{
-			HTMLChecker = true;
-		}
-		
-		if(currentInput == "<A HREF> </a>")
+		if(currentInput.contains("< >"))
 		{
 			HTMLChecker = false;
+		}
+
+		open = currentInput.indexOf("<");
+		close = currentInput.indexOf(">");
+		String tag = currentInput.toLowerCase().substring(open + 1, close);
+		open2 = currentInput.indexOf("<", close + 1);
+		close2 = currentInput.indexOf(">", close + 1);
+		String tag2 = currentInput.toLowerCase().substring(open2 + 1, close2);
+		
+		if(tag2.equals("/"+tag))
+		{
+			HTMLChecker = true;
 		}
 		
 		return HTMLChecker;
+			
 	}
 	
-/*	public boolean testTwitterChecker(String currentInput)
+	public boolean testTwitterChecker(String currentInput)
 	{
 		boolean twitter = false;
+		int hashtagStart = -1;
+		int hashtagEnd = -1;
+		int atStart = -1;
+		int atEnd = -1;
 		
-		if(currentInput == " ")
+		if(currentInput.equals(" "))
 		{
 			twitter = false;
 		}
 		
-		if(currentInput == "#dw35 f")
+		hashtagStart = currentInput.indexOf("#");
+		hashtagEnd = currentInput.indexOf(" ", hashtagStart + 1);
+		String hashtag = currentInput.toLowerCase().substring(hashtagStart + 1, hashtagEnd);
+		
+		if(!hashtag.equals(" "))
 		{
 			twitter = true;
 		}
 		
-		if(currentInput == " sdfsd # ")
+		atStart = currentInput.indexOf("@");
+		atEnd = currentInput.indexOf(" ", atStart + 1 );
+		String at = currentInput.toLowerCase().substring(atStart + 1, atEnd);
+	
+		if(!at.equals(" "))
 		{
-			twitter = false;
+			twitter = true;
 		}
+		
 		
 		return twitter;
 	}
-*/
+
 }
