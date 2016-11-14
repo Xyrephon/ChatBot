@@ -317,7 +317,7 @@ public class Chatbot
 			
 	}
 	
-	public boolean testTwitterChecker(String currentInput)
+	public boolean twitterChecker(String currentInput)
 	{
 		boolean twitter = false;
 		int hashtagStart = -1;
