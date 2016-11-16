@@ -276,50 +276,17 @@ public class Chatbot
 		int close = -1;
 		int open2 = -1;
 		int close2 = -1;
-		int HREFStart = -1;
-		int HREFEnd = -1;
+		int HREFStart = currentInput.toLowerCase().indexOf("<A HREF=\"".toLowerCase());
+		int HREFEnd = currentInput.indexOf("\"", HREFStart + 9);
 		int HREFCheck = -1;
-		int IStart = -1;
-		int IEnd = -1;
-		int BStart = -1;
-		int BEnd = -1;
-		
-		BStart = currentInput.toLowerCase().indexOf("<B>".toLowerCase());
-		BEnd = currentInput.toLowerCase().indexOf("</B>".toLowerCase());
-		
-		if (currentInput.length() > 3)
-		{
-			String BTag = currentInput.toLowerCase().substring(BStart + 3, BEnd);
-			
-			if (!BTag.equals("") && BEnd > 0 && BStart > 0)
-			{
-				HTMLChecker = true;
-			}
-		}
-		
-
-		IStart = currentInput.toLowerCase().indexOf("<I>".toLowerCase());
-		IEnd = currentInput.toLowerCase().indexOf("</i>".toLowerCase());
-
-		if (currentInput.length() > 3)
-		{
-			String ITag = currentInput.toLowerCase().substring(IStart + 3, IEnd);
-
-			if (!ITag.equals("") && IEnd > 0 && IStart > 0)
-			{
-				HTMLChecker = true;
-			}
-		}
 
 		if (currentInput.contains("<P>"))
 		{
 			HTMLChecker = true;
 		}
 
-		if (currentInput.length() > 9)
+		if (currentInput.length() > 9 && HREFStart > -1 && HREFEnd > -1)
 		{
-			HREFStart = currentInput.toLowerCase().indexOf("<A HREF=\"".toLowerCase());
-			HREFEnd = currentInput.indexOf("\"", HREFStart + 9);
 			String HREF = currentInput.toLowerCase().substring(HREFStart + 9, HREFEnd);
 			HREFCheck = currentInput.toLowerCase().indexOf("</a>".toLowerCase(), HREFEnd + 1);
 
@@ -340,17 +307,17 @@ public class Chatbot
 
 		open = currentInput.indexOf("<");
 		close = currentInput.indexOf(">");
-		if (close > -1)
+		if (close > -1 && open > -1 && open < close)
 		{
 			String tag = currentInput.toLowerCase().substring(open + 1, close);
 			open2 = currentInput.indexOf("<", close + 1);
 			close2 = currentInput.indexOf(">", close + 1);
 
-			if (close2 > -1)
+			if (close2 > -1 && open2 > -1 && open2 < close2)
 			{
 				String tag2 = currentInput.toLowerCase().substring(open2 + 1, close2);
 
-				if (tag2.equals("/" + tag))
+				if (tag2.equalsIgnoreCase("/" + tag))
 				{
 					HTMLChecker = true;
 				}
