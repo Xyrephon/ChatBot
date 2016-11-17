@@ -15,12 +15,12 @@ public class Chatbot
 	private ArrayList<String> politicalTopicList;
 	private String userName;
 	private String content;
-	
 
 	/**
 	 * Creates an instance of the Chatbot with the supplied username.
-	 * @param userName           
-	 * The username for the chatbot.
+	 * 
+	 * @param userName
+	 *            The username for the chatbot.
 	 */
 
 	public Chatbot(String userName)
@@ -31,8 +31,8 @@ public class Chatbot
 		memesList = new ArrayList<String>();
 		buildMemesList();
 		politicalTopicList = new ArrayList<String>();
-		buildPoliticalTopicsList();	
-		
+		buildPoliticalTopicsList();
+
 	}
 
 	private void buildMemesList()
@@ -62,8 +62,10 @@ public class Chatbot
 	{
 		politicalTopicList.add("Democrat");
 		politicalTopicList.add("Republican");
+		politicalTopicList.add("liberal");
 		politicalTopicList.add("11/8/16");
 		politicalTopicList.add("conservative");
+		politicalTopicList.add("Hillary");
 		politicalTopicList.add("Clinton");
 		politicalTopicList.add("Trump");
 		politicalTopicList.add("Kaine");
@@ -83,7 +85,8 @@ public class Chatbot
 
 	/**
 	 * Checks the length of the supplied string. Returns false if the supplied
-	 * String is empty or null, otherwise returns true. 
+	 * String is empty or null, otherwise returns true.
+	 * 
 	 * @param currentInput
 	 * @return A true or false based on the length of the supplied String.
 	 */
@@ -91,12 +94,12 @@ public class Chatbot
 	public boolean lengthChecker(String currentInput)
 	{
 		boolean hasLength = false;
-		
-		if (currentInput!= null && !currentInput.equals(""))
+
+		if (currentInput != null && !currentInput.equals(""))
 		{
 			hasLength = true;
 		}
-		
+
 		return hasLength;
 	}
 
@@ -108,16 +111,16 @@ public class Chatbot
 	 *            The supplied String to be checked. * @return Whether it
 	 *            matches the content area.
 	 */
-	
+
 	public boolean contentChecker(String currentInput)
 	{
 		boolean hasContent = false;
-		
+
 		if (currentInput.contains(content))
 		{
 			hasContent = true;
 		}
-		
+
 		return hasContent;
 	}
 
@@ -133,15 +136,15 @@ public class Chatbot
 	public boolean politicalTopicChecker(String currentInput)
 	{
 		boolean politicalTopic = false;
-		
-		for (String currentPoliticalTopic: politicalTopicList)
+
+		for (String currentPoliticalTopic : politicalTopicList)
 		{
-			if(currentInput.contains(currentPoliticalTopic))
-			{	
+			if (currentInput.contains(currentPoliticalTopic))
+			{
 				politicalTopic = true;
 			}
 		}
-		
+
 		return politicalTopic;
 	}
 
@@ -156,16 +159,16 @@ public class Chatbot
 	public boolean memeChecker(String currentInput)
 	{
 		boolean meme = false;
-		String userInput = currentInput.toLowerCase();
-		
-		for (String currentMeme: memesList)
+		String tempInput = currentInput.toLowerCase();
+
+		for (String currentMeme : memesList)
 		{
-			if(userInput.contains(currentMeme))
+			if (tempInput.contains(currentMeme))
 			{
 				meme = true;
 			}
 		}
-		
+
 		return meme;
 	}
 
@@ -211,129 +214,170 @@ public class Chatbot
 	 */
 	public void setContent(String content)
 	{
+		this.content = content;
 	}
-	
+
 	public boolean quitChecker(String currentInput)
 	{
 		boolean checker = false;
-		
-		if(currentInput == "exit")
+
+		if (currentInput.equals("exit"))
 		{
 			checker = false;
 		}
-		
-		if(currentInput == "quit")
+
+		if (currentInput.equals("quit"))
 		{
 			checker = true;
 		}
-		
+
 		return checker;
 	}
-	
+
 	public boolean keyboardMashChecker(String currentInput)
 	{
 		boolean mashChecker = false;
-		
-		if(currentInput == "S.D.F.")
+
+		if (currentInput.contains("S.D.F."))
 		{
 			mashChecker = false;
 		}
-		
-		if(currentInput == "derf")
+
+		if (currentInput.contains("derf"))
 		{
 			mashChecker = false;
 		}
-		
-		if(currentInput == "sdf")
+
+		if (currentInput.contains("sdf"))
 		{
 			mashChecker = true;
 		}
-		
-		if(currentInput == "dfg")
+
+		if (currentInput.contains("dfg"))
 		{
 			mashChecker = true;
 		}
-		
-		if(currentInput == "cvb")
-		{	
-			mashChecker = true;
-		}	
-		
-		if(currentInput == ",./")
+
+		if (currentInput.contains("cvb"))
 		{
 			mashChecker = true;
 		}
-		
+
+		if (currentInput.contains(",./"))
+		{
+			mashChecker = true;
+		}
+
 		return mashChecker;
 	}
-	
+
 	public boolean inputHTMLChecker(String currentInput)
 	{
 		boolean HTMLChecker = false;
-		
-		if(currentInput == "<>")
-		{
-			HTMLChecker = false;
-		}
-		
-		if(currentInput == "< >")
-		{
-			HTMLChecker = false;
-		}
-		
-		if(currentInput == "<B> </B>")
+		int open = -1;
+		int close = -1;
+		int open2 = -1;
+		int close2 = -1;
+		int HREFStart = currentInput.toLowerCase().indexOf("<A HREF=\"".toLowerCase());
+		int HREFEnd = currentInput.indexOf("\"", HREFStart + 9);
+		int HREFCheck = -1;
+
+		if (currentInput.contains("<P>"))
 		{
 			HTMLChecker = true;
 		}
-		
-		if(currentInput == "<B>  ")
+
+		if (currentInput.length() > 9 && HREFStart > -1 && HREFEnd > -1)
+		{
+			String HREF = currentInput.toLowerCase().substring(HREFStart + 9, HREFEnd);
+			HREFCheck = currentInput.toLowerCase().indexOf("</a>".toLowerCase(), HREFEnd + 1);
+
+			if (!HREF.equals(" ") && HREFCheck > 0)
+			{
+				HTMLChecker = true;
+			}
+		}
+		if (currentInput.contains("<>"))
 		{
 			HTMLChecker = false;
 		}
-		
-		if(currentInput == "<I> sdadas </i>")
-		{
-			HTMLChecker = true;
-		}
-		
-		if(currentInput == "<P>")
-		{
-			HTMLChecker = true;
-		}
-		
-		if(currentInput == "<A HREF=\"sdfs.html\"> </a>")
-		{
-			HTMLChecker = true;
-		}
-		
-		if(currentInput == "<A HREF> </a>")
+
+		if (currentInput.contains("< >"))
 		{
 			HTMLChecker = false;
 		}
-		
+
+		open = currentInput.indexOf("<");
+		close = currentInput.indexOf(">");
+		if (close > -1 && open > -1 && open < close)
+		{
+			String tag = currentInput.toLowerCase().substring(open + 1, close);
+			open2 = currentInput.indexOf("<", close + 1);
+			close2 = currentInput.indexOf(">", close + 1);
+
+			if (close2 > -1 && open2 > -1 && open2 < close2)
+			{
+				String tag2 = currentInput.toLowerCase().substring(open2 + 1, close2);
+
+				if (tag2.equalsIgnoreCase("/" + tag))
+				{
+					HTMLChecker = true;
+				}
+			}
+		}
+
 		return HTMLChecker;
+
 	}
-	
-/*	public boolean testTwitterChecker(String currentInput)
+
+	public boolean twitterChecker(String currentInput)
 	{
 		boolean twitter = false;
-		
-		if(currentInput == " ")
+		int hashtagStart = -1;
+		int hashtagEnd = -1;
+		int atStart = -1;
+		int atEnd = -1;
+
+		if (currentInput.equals(" "))
 		{
 			twitter = false;
 		}
+
+		hashtagStart = currentInput.indexOf("#");
 		
-		if(currentInput == "#dw35 f")
+		if (hashtagStart > -1)
 		{
-			twitter = true;
+			hashtagEnd = currentInput.indexOf(" ", hashtagStart + 1);
+
+			if (hashtagEnd > 0)
+			{
+				String hashtag = currentInput.toLowerCase().substring(hashtagStart, hashtagEnd);
+
+				if (!hashtag.equals("#"))
+				{
+					twitter = true;
+				}
+			}
 		}
+
+		atStart = currentInput.indexOf("@");
 		
-		if(currentInput == " sdfsd # ")
+		if (atStart > -1)
 		{
-			twitter = false;
+			atEnd = currentInput.indexOf(" ", atStart + 1);
+
+			if (atEnd > 0)
+			{
+				String at = currentInput.toLowerCase().substring(atStart, atEnd);
+
+				if (!at.equals("@"))
+				{
+					twitter = true;
+				}
+			}
 		}
-		
+
 		return twitter;
 	}
-*/
+
 }
