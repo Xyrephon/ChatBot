@@ -62,8 +62,10 @@ public class Chatbot
 	{
 		politicalTopicList.add("Democrat");
 		politicalTopicList.add("Republican");
+		politicalTopicList.add("liberal");
 		politicalTopicList.add("11/8/16");
 		politicalTopicList.add("conservative");
+		politicalTopicList.add("Hillary");
 		politicalTopicList.add("Clinton");
 		politicalTopicList.add("Trump");
 		politicalTopicList.add("Kaine");
@@ -212,7 +214,7 @@ public class Chatbot
 	 */
 	public void setContent(String content)
 	{
-
+		this.content = content;
 	}
 
 	public boolean quitChecker(String currentInput)
@@ -342,28 +344,36 @@ public class Chatbot
 		}
 
 		hashtagStart = currentInput.indexOf("#");
-		hashtagEnd = currentInput.indexOf(" ", hashtagStart + 1);
-
-		if (hashtagEnd > -1)
+		
+		if (hashtagStart > -1)
 		{
-			String hashtag = currentInput.toLowerCase().substring(hashtagStart + 1, hashtagEnd);
+			hashtagEnd = currentInput.indexOf(" ", hashtagStart + 1);
 
-			if (!hashtag.equals(" "))
+			if (hashtagEnd > 0)
 			{
-				twitter = true;
+				String hashtag = currentInput.toLowerCase().substring(hashtagStart, hashtagEnd);
+
+				if (!hashtag.equals("#"))
+				{
+					twitter = true;
+				}
 			}
 		}
 
 		atStart = currentInput.indexOf("@");
-		atEnd = currentInput.indexOf(" ", atStart + 1);
-
-		if (atEnd > -1)
+		
+		if (atStart > -1)
 		{
-			String at = currentInput.toLowerCase().substring(atStart + 1, atEnd);
+			atEnd = currentInput.indexOf(" ", atStart + 1);
 
-			if (!at.equals(" "))
+			if (atEnd > 0)
 			{
-				twitter = true;
+				String at = currentInput.toLowerCase().substring(atStart, atEnd);
+
+				if (!at.equals("@"))
+				{
+					twitter = true;
+				}
 			}
 		}
 
