@@ -20,11 +20,6 @@ public class ChatbotController
 	public void start()
 	{
 		String response = "Words";
-		while (stupidBot.lengthChecker(response))
-		{
-			
-			response = display.collectResponse("What do you want to talk about?");
-		}
 	}
 	
 	public String useChatbotCheckers(String input)
@@ -58,11 +53,57 @@ public class ChatbotController
 		
 		if(checkedInput.length() == 0)
 		{
-			checkedInput = "I have no idea you mean about " + input;
+			checkedInput = "I have no idea you mean about, \"" + input + "\"\n";
+		}
+		
+		if (stupidBot.politicalTopicChecker(input))
+		{
+			checkedInput = "\nYou are talking about politics!\n";
+		}
+		int canBeRandom = (int) (Math.random() * 7);
+		if(canBeRandom % 7 == 0)
+		{
+		checkedInput += randomTopicGenerator();
 		}
 		
 		return checkedInput;
 	}
-	
+
+	private String randomTopicGenerator()
+	{
+		String randomTopic = "";
+		int random = (int) (Math.random() * 7);
+		
+		switch(random)
+		{
+		case 0:
+			randomTopic = "Did you hear about the daft pk beastie boys mix?";
+			break;
+		case 1:
+			randomTopic = "Can you bring me some Siracha?";
+			break;
+		case 2:
+			randomTopic = "Time for some industrial!";
+			break;
+		case 3:
+			randomTopic = "Reading novels is fantastic!";
+			break;
+		case 4:
+			randomTopic = "Computational and algorithmic thinking for the win";
+			break;
+		case 5:
+			randomTopic = "I love Java!";
+			break;
+		case 6:
+			randomTopic = "Time to run!";
+			break;
+		default:
+			randomTopic = "This can't be happening!";
+			break;
+			
+		}
+		
+		return randomTopic;
+	}
 
 }

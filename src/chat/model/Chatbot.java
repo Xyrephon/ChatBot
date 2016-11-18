@@ -27,7 +27,7 @@ public class Chatbot
 	{
 		content = new String("dog");
 		this.userName = userName;
-		this.content = "Something nifty";
+		this.content = "Video Games";
 		memesList = new ArrayList<String>();
 		buildMemesList();
 		politicalTopicList = new ArrayList<String>();
