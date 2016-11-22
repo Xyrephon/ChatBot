@@ -16,12 +16,19 @@ public class ChatController
 		display = new ChatViewer();
 		appFrame = new ChatFrame(this);
 	}
-
+	/**
+	 * Used to start the program.
+	 */
 	public void start()
 	{
 
 	}
-
+	/**
+	 * Looks through all of my checkers to see if the input matches a topic.
+	 * Sometimes adds a random topic using randomTopicGenerator.
+	 * @param input
+	 * @return
+	 */
 	public String useChatbotCheckers(String input)
 	{
 		String checkedInput = "";
@@ -77,17 +84,26 @@ public class ChatController
 
 		return checkedInput;
 	}
-	
+	/**
+	 * Gets the ChatFrame
+	 * @return
+	 */
 	public ChatFrame getBaseFrame()
 	{
 		return appFrame;
 	}
-	
+	/**
+	 * Gets the Chatbot
+	 * @return
+	 */
 	public Chatbot getChatbot()
 	{
 		return stupidBot;
 	}
-	
+	/**
+	 * Creates a random topic for users
+	 * @return
+	 */
 	private String randomTopicGenerator()
 	{
 		String randomTopic = "";

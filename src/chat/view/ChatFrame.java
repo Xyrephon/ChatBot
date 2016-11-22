@@ -9,7 +9,10 @@ public class ChatFrame extends JFrame
 {
 	private ChatController baseController;
 	private ChatPanel appPanel;
-	
+	/**
+	 * Calls the ChatPanel and then calls setupFrame().
+	 * @param baseController
+	 */
 	public ChatFrame(ChatController baseController)
 	{
 		super();
@@ -18,7 +21,9 @@ public class ChatFrame extends JFrame
 		
 		setupFrame();
 	}
-	
+	/**
+	 * Adds the title, the size, makes it not resizable, and sets visibility to true.
+	 */
 	private void setupFrame()
 	{
 		this.setContentPane(appPanel);

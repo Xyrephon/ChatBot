@@ -11,9 +11,21 @@ import java.util.ArrayList;
  */
 public class Chatbot
 {
+	/**
+	 * Creates an ArrayList for memes, allowing the chatbot to catch if someone is typing in memes.
+	 */
 	private ArrayList<String> memesList;
+	/**
+	 * Creates an ArrayList for political topics, allowing the chatbot to see if someone is talking about politics.
+	 */
 	private ArrayList<String> politicalTopicList;
+	/**
+	 * Creates the variable username, allowing for the chatbot to detect a username.
+	 */
 	private String userName;
+	/**
+	 * Creats the variable content, allowing users to find what my secret topic is.
+	 */
 	private String content;
 
 	/**
@@ -34,7 +46,10 @@ public class Chatbot
 		buildPoliticalTopicsList();
 
 	}
-
+	
+	/**
+	 * 
+	 */
 	private void buildMemesList()
 	{
 		memesList.add("doge");

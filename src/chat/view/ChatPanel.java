@@ -14,7 +14,10 @@ public class ChatPanel extends JPanel
 	private JTextField chatField;
 	private JButton chatButton;
 	private JLabel chatTitle;
-	
+	/**
+	 * Initializes all data members, and calls setupChatDisplay(), setupPanel(), setupLayout(), and setupListeners().
+	 * @param baseController
+	 */
 	public ChatPanel(ChatController baseController)
 	{
 		super();
@@ -31,7 +34,9 @@ public class ChatPanel extends JPanel
 		setupLayout();
 		setupListeners();
 	}
-	
+	/**
+	 * Allows the user to write to the chat bot, and sets the word wrap to true.
+	 */
 	private void setupChatDisplay()
 	{
 		chatDisplay.setEditable(false);
@@ -39,7 +44,9 @@ public class ChatPanel extends JPanel
 		chatDisplay.setWrapStyleWord(true);
 		chatDisplay.setLineWrap(true);
 	}
-	
+	/**
+	 * Adds all of the components to the panel, and makes the background green.
+	 */
 	private void setupPanel()
 	{
 		this.setLayout(baseLayout);
@@ -49,7 +56,9 @@ public class ChatPanel extends JPanel
 		this.add(chatField);
 		this.add(chatTitle);
 	}
-	
+	/**
+	 * Changes the layout of the panel, making all of the components go where they need to be.
+	 */
 	private void setupLayout()
 	{
 		baseLayout.putConstraint(SpringLayout.EAST, chatDisplay, -70, SpringLayout.EAST, this);
@@ -61,7 +70,9 @@ public class ChatPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.SOUTH, chatTitle, -38, SpringLayout.NORTH, chatDisplay);
 		baseLayout.putConstraint(SpringLayout.EAST, chatTitle, -197, SpringLayout.EAST, this);
 	}
-	
+	/**
+	 * Makes the button send what the user writes to the chatbot, allowing the chatbot to respond.
+	 */
 	private void setupListeners()
 	{
 		chatButton.addActionListener(new ActionListener()
