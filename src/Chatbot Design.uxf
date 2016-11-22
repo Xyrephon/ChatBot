@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>540</x>
-      <y>190</y>
+      <x>730</x>
+      <y>170</y>
       <w>270</w>
       <h>170</h>
     </coordinates>
@@ -21,8 +21,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>540</x>
-      <y>110</y>
+      <x>730</x>
+      <y>80</y>
       <w>270</w>
       <h>70</h>
     </coordinates>
@@ -36,10 +36,99 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>180</x>
-      <y>360</y>
-      <w>290</w>
+      <x>690</x>
+      <y>440</y>
+      <w>300</w>
       <h>110</h>
+    </coordinates>
+    <panel_attributes>chat.view :: ChatFrame
+--
+- baseController : ChatbotController
+- appPanel : ChatPanel
+--
++ ChatFrame(Chatbot Controller) : constructor
+- setupFrame() : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>50</x>
+      <y>40</y>
+      <w>310</w>
+      <h>350</h>
+    </coordinates>
+    <panel_attributes>chat.model :: Chatbot
+--
+- memesList : ArrayList&lt;String&gt;
+- politicalTopicList : ArrayList&lt;String&gt;
+- userName : String
+- content : String
+--
++ Chatbot(String) : constructor
+- buildMemesList() : void
+- buildPoliticalTopicsList() : void
++ lengthChecker(String) : boolean
++ contentChecker(String) : boolean
++ politicalTopicChecker(String) : boolean
++ memeChecker(String) : boolean
++ getUserName() : String
++ getContent() : String
++ getMemesList() : ArrayList&lt;String&gt;
++ getPoliticalTopicList() : ArrayList&lt;String&gt;
++ setContent(String) : void
++ quitChecker(String) : boolean
++ keyboardMashChecker(String) : boolean
++ inputHTMLChecker(String) : boolean
++ twitterChecker(String) : boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>50</x>
+      <y>0</y>
+      <w>450</w>
+      <h>400</h>
+    </coordinates>
+    <panel_attributes>chat.model
+--
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>50</x>
+      <y>410</y>
+      <w>970</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>chat.view
+--
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>700</x>
+      <y>40</y>
+      <w>320</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>chat.controller
+--
+bg=magenta</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>60</x>
+      <y>440</y>
+      <w>270</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>chat.view :: ChatViewer
 --
@@ -53,55 +142,24 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>170</x>
-      <y>120</y>
-      <w>280</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>chat.model :: ChatBot
---
-
---
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLPackage</id>
-    <coordinates>
-      <x>150</x>
-      <y>80</y>
-      <w>320</w>
+      <x>370</x>
+      <y>440</y>
+      <w>300</w>
       <h>210</h>
     </coordinates>
-    <panel_attributes>chat.model
+    <panel_attributes>chat.view :: ChatPanel
 --
-bg=blue</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLPackage</id>
-    <coordinates>
-      <x>150</x>
-      <y>310</y>
-      <w>350</w>
-      <h>190</h>
-    </coordinates>
-    <panel_attributes>chat.view
+- baseController : ChatbotController
+- baseLayout : SpringLayout
+- chatDisplay : JTextArea
+- chatField : JTextField
+- chatButton : JButton
 --
-bg=green</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLPackage</id>
-    <coordinates>
-      <x>510</x>
-      <y>80</y>
-      <w>320</w>
-      <h>310</h>
-    </coordinates>
-    <panel_attributes>chat.controller
---
-bg=magenta</panel_attributes>
++ ChatPanel(ChatbotController) : constructor
++ setupChatDisplay() : void
++ setupPanel() : void
++ setupLayout() : void
++ setupListeners() : void</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>

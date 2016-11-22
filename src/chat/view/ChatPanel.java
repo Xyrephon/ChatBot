@@ -1,20 +1,21 @@
 package chat.view;
 
 import javax.swing.*;
-import chat.controller.ChatbotController;
+import chat.controller.ChatController;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class ChatPanel extends JPanel
 {
-	private ChatbotController baseController;
+	private ChatController baseController;
 	private SpringLayout baseLayout;
 	private JTextArea chatDisplay;
 	private JTextField chatField;
 	private JButton chatButton;
+	private JLabel chatTitle;
 	
-	public ChatPanel(ChatbotController baseController)
+	public ChatPanel(ChatController baseController)
 	{
 		super();
 		this.baseController = baseController;
@@ -23,6 +24,7 @@ public class ChatPanel extends JPanel
 		chatDisplay = new JTextArea(5,25);
 		chatField = new JTextField(25);
 		chatButton = new JButton("Chat with the bot");
+		chatTitle = new JLabel("ChatBot!");
 		
 		setupChatDisplay();
 		setupPanel();
@@ -45,6 +47,7 @@ public class ChatPanel extends JPanel
 		this.add(chatButton);
 		this.add(chatDisplay);
 		this.add(chatField);
+		this.add(chatTitle);
 	}
 	
 	private void setupLayout()
@@ -55,6 +58,8 @@ public class ChatPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.WEST, chatField, 0, SpringLayout.WEST, chatDisplay);
 		baseLayout.putConstraint(SpringLayout.NORTH, chatButton, 6, SpringLayout.SOUTH, chatField);
 		baseLayout.putConstraint(SpringLayout.WEST, chatButton, 0, SpringLayout.WEST, chatDisplay);
+		baseLayout.putConstraint(SpringLayout.SOUTH, chatTitle, -38, SpringLayout.NORTH, chatDisplay);
+		baseLayout.putConstraint(SpringLayout.EAST, chatTitle, -197, SpringLayout.EAST, this);
 	}
 	
 	private void setupListeners()
