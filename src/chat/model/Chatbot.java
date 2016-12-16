@@ -24,7 +24,7 @@ public class Chatbot
 	 */
 	private String userName;
 	/**
-	 * Creats the variable content, allowing users to find what my secret topic is.
+	 * Creates the variable content, allowing users to find what my secret topic is.
 	 */
 	private String content;
 
