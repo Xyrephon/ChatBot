@@ -14,6 +14,10 @@ public class ChatPanel extends JPanel
 	private JTextField chatField;
 	private JButton chatButton;
 	private JLabel chatTitle;
+	private JButton twitterOpen;
+	private JButton twitterSave;
+	private JButton twitterSearch;
+	private JButton twitterChat;
 	/**
 	 * Initializes all data members, and calls setupChatDisplay(), setupPanel(), setupLayout(), and setupListeners().
 	 * @param baseController
