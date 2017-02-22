@@ -14,7 +14,7 @@ public class ChatPanel extends JPanel
 	private JTextField chatField;
 	private JButton chatButton;
 	private JLabel chatTitle;
-	private JButton twitterOpen;
+	private JButton twitterPost;
 	private JButton twitterSave;
 	private JButton twitterSearch;
 	private JButton twitterChat;
@@ -26,13 +26,17 @@ public class ChatPanel extends JPanel
 	{
 		super();
 		this.baseController = baseController;
-		
+	
 		baseLayout = new SpringLayout();
 		chatDisplay = new JTextArea(5,25);
 		chatField = new JTextField(25);
 		chatButton = new JButton("Chat with the bot");
 		chatTitle = new JLabel("ChatBot!");
-		
+		twitterPost = new JButton("Open");
+		twitterSave = new JButton("Save");
+		twitterSearch = new JButton("Search");
+		twitterChat = new JButton("Post");
+
 		setupChatDisplay();
 		setupPanel();
 		setupLayout();
@@ -59,20 +63,33 @@ public class ChatPanel extends JPanel
 		this.add(chatDisplay);
 		this.add(chatField);
 		this.add(chatTitle);
+		this.add(twitterPost);
+		this.add(twitterSave);
+		this.add(twitterSearch);
+		this.add(twitterChat);
 	}
 	/**
 	 * Changes the layout of the panel, making all of the components go where they need to be.
 	 */
 	private void setupLayout()
 	{
-		baseLayout.putConstraint(SpringLayout.EAST, chatDisplay, -70, SpringLayout.EAST, this);
-		baseLayout.putConstraint(SpringLayout.NORTH, chatField, 182, SpringLayout.NORTH, this);
-		baseLayout.putConstraint(SpringLayout.SOUTH, chatDisplay, -6, SpringLayout.NORTH, chatField);
-		baseLayout.putConstraint(SpringLayout.WEST, chatField, 0, SpringLayout.WEST, chatDisplay);
-		baseLayout.putConstraint(SpringLayout.NORTH, chatButton, 6, SpringLayout.SOUTH, chatField);
-		baseLayout.putConstraint(SpringLayout.WEST, chatButton, 0, SpringLayout.WEST, chatDisplay);
-		baseLayout.putConstraint(SpringLayout.SOUTH, chatTitle, -38, SpringLayout.NORTH, chatDisplay);
+		baseLayout.putConstraint(SpringLayout.NORTH, chatField, 200, SpringLayout.SOUTH, chatDisplay);
 		baseLayout.putConstraint(SpringLayout.EAST, chatTitle, -197, SpringLayout.EAST, this);
+		baseLayout.putConstraint(SpringLayout.EAST, twitterSave, 0, SpringLayout.EAST, twitterChat);
+		baseLayout.putConstraint(SpringLayout.SOUTH, twitterChat, -33, SpringLayout.NORTH, twitterSearch);
+		baseLayout.putConstraint(SpringLayout.EAST, twitterChat, -23, SpringLayout.EAST, this);
+		baseLayout.putConstraint(SpringLayout.SOUTH, twitterSearch, -57, SpringLayout.NORTH, twitterSave);
+		baseLayout.putConstraint(SpringLayout.EAST, twitterSearch, -10, SpringLayout.EAST, this);
+		baseLayout.putConstraint(SpringLayout.EAST, chatField, -73, SpringLayout.WEST, twitterSave);
+		baseLayout.putConstraint(SpringLayout.SOUTH, twitterSave, 0, SpringLayout.SOUTH, chatField);
+		baseLayout.putConstraint(SpringLayout.SOUTH, twitterOpen, -170, SpringLayout.SOUTH, this);
+		baseLayout.putConstraint(SpringLayout.EAST, twitterOpen, -171, SpringLayout.EAST, this);
+		baseLayout.putConstraint(SpringLayout.NORTH, chatDisplay, 6, SpringLayout.SOUTH, chatTitle);
+		baseLayout.putConstraint(SpringLayout.SOUTH, chatTitle, -442, SpringLayout.SOUTH, this);
+		baseLayout.putConstraint(SpringLayout.EAST, chatDisplay, 0, SpringLayout.EAST, chatButton);
+		baseLayout.putConstraint(SpringLayout.NORTH, chatButton, 26, SpringLayout.SOUTH, chatField);
+		baseLayout.putConstraint(SpringLayout.WEST, chatButton, 217, SpringLayout.WEST, this);
+		
 	}
 	/**
 	 * Makes the button send what the user writes to the chatbot, allowing the chatbot to respond.
