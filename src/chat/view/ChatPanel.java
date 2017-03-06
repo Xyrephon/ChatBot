@@ -32,10 +32,10 @@ public class ChatPanel extends JPanel
 		chatField = new JTextField(25);
 		chatButton = new JButton("Chat with the bot");
 		chatTitle = new JLabel("ChatBot!");
-		twitterPost = new JButton("Open");
+		twitterPost = new JButton("Post");
 		twitterSave = new JButton("Save");
 		twitterSearch = new JButton("Search");
-		twitterChat = new JButton("Post");
+		twitterChat = new JButton("Chat");
 
 		setupChatDisplay();
 		setupPanel();
@@ -82,8 +82,6 @@ public class ChatPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.EAST, twitterSearch, -10, SpringLayout.EAST, this);
 		baseLayout.putConstraint(SpringLayout.EAST, chatField, -73, SpringLayout.WEST, twitterSave);
 		baseLayout.putConstraint(SpringLayout.SOUTH, twitterSave, 0, SpringLayout.SOUTH, chatField);
-		baseLayout.putConstraint(SpringLayout.SOUTH, twitterOpen, -170, SpringLayout.SOUTH, this);
-		baseLayout.putConstraint(SpringLayout.EAST, twitterOpen, -171, SpringLayout.EAST, this);
 		baseLayout.putConstraint(SpringLayout.NORTH, chatDisplay, 6, SpringLayout.SOUTH, chatTitle);
 		baseLayout.putConstraint(SpringLayout.SOUTH, chatTitle, -442, SpringLayout.SOUTH, this);
 		baseLayout.putConstraint(SpringLayout.EAST, chatDisplay, 0, SpringLayout.EAST, chatButton);
@@ -105,6 +103,47 @@ public class ChatPanel extends JPanel
 				
 				chatDisplay.setText("You said: " + personWords +"\n"+ "Chatbot says: " + chatbotResponse);
 				chatField.setText("");
+				
+			}
+		});
+		
+		twitterPost.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				baseController.useTwitter(chatField.getText());
+				
+			}
+		});
+		
+		twitterSave.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				
+			}
+		});
+		
+		twitterSearch.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				
+			}
+		});
+		
+		twitterSave.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				
+			}
+		});
+		
+		twitterChat.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
 				
 			}
 		});

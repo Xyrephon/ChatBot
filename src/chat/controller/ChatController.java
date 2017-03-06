@@ -3,16 +3,19 @@ package chat.controller;
 import chat.model.Chatbot;
 import chat.view.ChatViewer;
 import chat.view.ChatFrame;
+import chat.model.CTECTwitter;
 
 public class ChatController
 {
 	private Chatbot stupidBot;
 	private ChatViewer display;
 	private ChatFrame appFrame;
+	public CTECTwitter twitterBot;
 
 	public ChatController()
 	{
 		stupidBot = new Chatbot("Unitelligent Chat Machine");
+		twitterBot = new CTECTwitter(this);
 		display = new ChatViewer();
 		appFrame = new ChatFrame(this);
 	}
@@ -78,7 +81,7 @@ public class ChatController
 		}
 		else
 		{
-			display.displatyMessage("Thanks for chatting! Talk to you soon!");
+			display.displayMessage("Thanks for chatting! Talk to you soon!");
 			System.exit(0);
 		}
 
@@ -139,6 +142,22 @@ public class ChatController
 		}
 
 		return randomTopic;
+	}
+	
+	public void handleErrors(Exception currentException)
+	{
+		display.displayMessage("An error has occured. Details provided next.");
+		display.displayMessage(currentException.getMessage());
+	}
+	
+	public void useTwitter(String text)
+	{
+		twitterBot.sendTweet(text);
+	}
+	
+	public ChatViewer getPopup()
+	{
+		return display;
 	}
 
 }
