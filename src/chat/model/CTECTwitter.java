@@ -1,14 +1,19 @@
 package chat.model;
 
 import chat.controller.ChatController;
+import chat.model.Chatbot;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.Twitter;
 import twitter4j.Status;
 import java.util.List;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import twitter4j.Paging;
 import java.util.Scanner;
+import twitter4j.Query;
+import twitter4j.GeoLocation;
+import twitter4j.QueryResult;
 
 public class CTECTwitter 
 {
@@ -98,8 +103,9 @@ public class CTECTwitter
 		
 		removeAllBoringWords();
 		removeEmptyText();
-		
-		results += "There are " + tweetedWords.size() + " words in the tweets from " + user + " ";
+	
+		results += calculatePopularWordAndCount();
+//		results += "There are " + tweetedWords.size() + " words in the tweets from " + user + " ";
 		return results;
 	}
 	
@@ -140,12 +146,12 @@ public class CTECTwitter
 			String [] tweetWords =  tweetText.split(" ");
 			for(int index = 0; index < tweetWords.length; index++)
 			{
-				tweetedWords.add(tweetWords[index]);
+				tweetedWords.add(removePunctuation(tweetWords[index]));
 			}
 		}
 	}
 
-	private String caclulatePopularWordAndCount()
+	private String calculatePopularWordAndCount()
 	{
 		String information = "";
 		String mostPopular = "";
@@ -168,12 +174,58 @@ public class CTECTwitter
 				popularCount = currentPopularity;
 				mostPopular = tweetedWords.get(index);
 			}
-			
 		}
 		
-		information = "The most popular word is: " + mostPopular + ", and it occured " + popularCount + " times out of " + tweetedWords.size() + ", AKA " + ((double) popularCount)/tweetedWords.size() + "%";
+		information = mostPopular + ", and it occured " + popularCount + " times out of " + tweetedWords.size() + ", AKA " + (DecimalFormat.getPercentInstance().format(((double)popularCount)/tweetedWords.size()) + " ");
 		
 		
 		return information;
+	}
+	
+	private String removePunctuation(String currentString)
+	{
+		String punctuation = ".,'?!:;\"(){}^[]<>-"; //Think about adding hashtag and @
+		
+		String scrubbedString = "";
+		for (int i = 0; i < currentString.length(); i++)
+		{
+			if(punctuation.indexOf(currentString.charAt(i)) == -1)
+			{
+				scrubbedString += currentString.charAt(i);
+			}
+		}
+		return null;
+	}
+	
+	public String Investigation(int miles)
+	{
+		String results = "";
+		int numberOfHtml = 0;
+		int numberOfHtml2 = 0;
+		
+		Query search = new Query("<P>");
+		search.setCount(500);
+		search.setGeoCode(new GeoLocation(40.587521, -111.869178), miles, Query.MILES);
+		search.setSince("2017-1-1");
+		
+		try
+		{
+			QueryResult result = chatbotTwitter.search(search);
+			for (Status tweet : result.getTweets())
+			{
+				if (baseController.getChatbot().inputHTMLChecker(tweet.getText()))
+				{
+					numberOfHtml++;
+				}
+			}
+			
+		}
+		catch (TwitterException error)
+		{
+			error.printStackTrace();
+		}
+		results = "Number of tweets in html is: " + numberOfHtml;
+		
+		return results;
 	}
 }
