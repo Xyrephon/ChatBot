@@ -203,7 +203,7 @@ public class CTECTwitter
 		int numberOfHtml = 0;
 		int numberOfHtml2 = 0;
 		
-		Query search = new Query("<P>");
+		Query search = new Query("href");
 		search.setCount(500);
 		search.setGeoCode(new GeoLocation(40.587521, -111.869178), miles, Query.MILES);
 		search.setSince("2017-1-1");
