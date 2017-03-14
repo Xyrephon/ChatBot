@@ -14,7 +14,7 @@ public class ChatViewer
 			return response;
 		}
 		
-		public void displatyMessage(String message)
+		public void displayMessage(String message)
 		{
 			JOptionPane.showMessageDialog(null, message);
 		}
