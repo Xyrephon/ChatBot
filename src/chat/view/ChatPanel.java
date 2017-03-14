@@ -38,7 +38,7 @@ public class ChatPanel extends JPanel
 		searchTwitterButton = new JButton("Search");
 		twitterChat = new JButton("Chat");
 		twitterLoad = new JButton("Load");
-		chatScroll = new JScrollPane(5,25);	
+		chatScroll = new JScrollPane();	
 		
 		setupChatDisplay();
 		setupPanel();

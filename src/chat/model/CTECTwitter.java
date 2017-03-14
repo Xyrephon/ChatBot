@@ -103,6 +103,7 @@ public class CTECTwitter
 		
 		removeAllBoringWords();
 		removeEmptyText();
+		removeMentions();
 	
 		results += calculatePopularWordAndCount();
 //		results += "There are " + tweetedWords.size() + " words in the tweets from " + user + " ";
@@ -204,7 +205,7 @@ public class CTECTwitter
 		int numberOfHtml2 = 0;
 		
 		Query search = new Query("href");
-		search.setCount(500);
+		search.setCount(100);
 		search.setGeoCode(new GeoLocation(40.587521, -111.869178), miles, Query.MILES);
 		search.setSince("2017-1-1");
 		
@@ -227,5 +228,17 @@ public class CTECTwitter
 		results = "Number of tweets in html is: " + numberOfHtml;
 		
 		return results;
+	}
+	
+	private void removeMentions()
+	{
+		for (int index = 0; index < tweetedWords.size(); index++)
+		{
+			if(tweetedWords.get(index).substring(0, 1).equals("@"))
+			{
+				tweetedWords.remove(index);
+				index --;
+			}
+		}
 	}
 }
