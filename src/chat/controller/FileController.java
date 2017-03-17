@@ -35,6 +35,7 @@ public class FileController
 		}
 	}
 
+	
 	public static String readFile(ChatController baseController, String fileName)
 	{
 		String fileContents = "";
@@ -50,6 +51,10 @@ public class FileController
 		catch(IOException someIOError)
 		{
 			baseController.handleErrors(someIOError);
+		}
+		catch(NullPointerException fileError)
+		{
+			baseController.handleErrors(fileError);
 		}
 		
 		return fileContents;
