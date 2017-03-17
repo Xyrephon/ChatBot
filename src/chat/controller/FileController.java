@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 public class FileController 
 {
-	public static void saveFIle(ChatController baseController, String fileName, String contents)
+	public static void saveFile(ChatController baseController, String fileName, String contents)
 	{
 		
 		try

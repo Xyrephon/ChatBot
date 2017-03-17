@@ -1,7 +1,7 @@
 package chat.view;
 
 import javax.swing.*;
-import chat.controller.ChatController;
+import chat.controller.*;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -130,7 +130,8 @@ public class ChatPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				
+				String fileName = chatField.getText();
+				FileController.saveFile(baseController, fileName, chatDisplay.getText());
 			}
 		});
 		
@@ -142,14 +143,6 @@ public class ChatPanel extends JPanel
 				chatDisplay.setText(baseController.twitterBot.Investigation(miles));
 //				String results = baseController.searchTwitterUser(chatField.getText());
 //				chatDisplay.setText(results + chatDisplay.getText());
-			}
-		});
-		
-		twitterSave.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent click)
-			{
-				
 			}
 		});
 		
@@ -165,6 +158,9 @@ public class ChatPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
+				String fileName = chatField.getText();
+				String saved = FileController.readFile(baseController, fileName + ".txt");
+				chatDisplay.setText(saved);
 				
 			}
 		});
